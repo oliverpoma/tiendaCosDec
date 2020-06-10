@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h3 class="text-secondary">Lista de productos publicados</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">Imagen</th>
+					<th scope="col">Artículo</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Oferta</th>
+					<th scope="col">Stock</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="articulo: ${articulos}">
+					<th scope="row">1</th>
+					<td scope="row"><img alt=""
+						th:src="@{'/uploads/'+${articulo.imagenes}}" width="70" /></td>
+					<td scope="row" th:text="${articulo.nombre}"></td>
+					<td scope="row" th:text="${articulo.precio}"></td>
+					<td scope="row" th:text="${articulo.oferta}"></td>
+					<td scope="row" th:text="${articulo.stock}"></td>
+					<td scope="row"><a th:href="@{'/editar/'+${articulo.id}}" class="btn btn-warning">Editar</a></td>
+					<td scope="row"><a th:href="@{'/eliminar/'+${articulo.id}}" class="btn btn-danger" onclick="return confirm('Estas segura de eliminar este artículo?')">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
